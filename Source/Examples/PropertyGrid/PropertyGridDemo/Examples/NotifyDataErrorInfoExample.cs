@@ -18,26 +18,43 @@ namespace ExampleLibrary
     {
         private readonly Dictionary<string, ValidationResult> errors = new Dictionary<string, ValidationResult>();
 
-        private string name;
+        private string firstName;
+        private string lastname;
 
         public NotifyDataErrorInfoExample()
         {
-            this.Name = string.Empty;
+            this.FirstName = string.Empty;
         }
 
         [AutoUpdateText]
         [Description("Should not be empty.")]
-        public string Name
+        public string FirstName
         {
             get
             {
-                return this.name;
+                return this.firstName;
             }
 
             set
             {
-                this.name = value;
-                this.Validate("Name", !string.IsNullOrEmpty(this.name), "Name should be specified");
+                this.firstName = value;
+                this.Validate(nameof(FirstName), !string.IsNullOrEmpty(this.firstName), "First name should be specified");
+            }
+        }
+
+        [AutoUpdateText]
+        [Description("Should not be empty.")]
+        public string LastName
+        {
+            get
+            {
+                return this.lastname;
+            }
+
+            set
+            {
+                this.lastname = value;
+                this.Validate(nameof(LastName), !string.IsNullOrEmpty(this.lastname), "Last name should be specified");
             }
         }
 
